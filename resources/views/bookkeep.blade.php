@@ -34,7 +34,7 @@
                                             <i class="fas fa-dollar-sign"></i>
                                             </span>
                                         </div>
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" value="0">
                                     </div>
                                 </td>
                                 <td>
@@ -44,7 +44,7 @@
                                             <i class="fas fa-dollar-sign"></i>
                                             </span>
                                         </div>
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" value="0">
                                     </div>
                                 </td>
                                 <td>
@@ -54,6 +54,17 @@
                                 </td>
                             </tr>
                         @endforeach
+                            <tr>
+                                <td>總餘額</td>
+                                <td>目前餘額</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right">
+                                    <a class="btn btn-app bg-success">
+                                        <i class="fas fa-save"></i> 儲存
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
