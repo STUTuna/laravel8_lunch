@@ -30,4 +30,9 @@ Route::get('/dashboard/users', [App\Http\Controllers\HomeController::class, 'ind
 // 記帳
 Route::get('/dashboard/bookkeep', [App\Http\Controllers\BookkeepController::class, 'index'])->name('bookkeep');
 
+Route::post('/dashboard/bookkeep', [App\Http\Controllers\BookkeepController::class, 'store'])->name('bookkeep.store');
+
+Route::get('/dashboard/depositLog', [App\Http\Controllers\DepositLogController::class, 'index'])->name('depositLog');
+
+
 // Route::get('/bookkeep', [App\Http\Controllers\HomeController::class, 'index'])->name('bookkeep');

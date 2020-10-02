@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\DepositLog;
 
 class BookkeepController extends Controller
 {
@@ -47,7 +48,29 @@ class BookkeepController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        foreach ($request->input('user_id') as $key => $user_id) {
+            $user = User::find($user_id);
+            $user->deposit = $user->deposit - intval($request->input('del')[$key]) + intval($request->input('add')[$key]);
+            $user->save();
+
+            $depositLog = new DepositLog;
+            $depositLog->user_id = $user_id;
+
+            if(isset($request->input('del')[$key]) && $request->input('del')[$key] > 0){
+                $depositLog->money =  intval($request->input('del')[$key]) * -1;
+                $depositLog->operator_id = auth()->user()->id;
+                $depositLog->save();
+            }
+
+            if(isset($request->input('add')[$key]) && $request->input('add')[$key] > 0){
+                $depositLog->money =  intval($request->input('add')[$key]);
+                $depositLog->operator_id = auth()->user()->id;
+                $depositLog->save();
+            }
+
+        }
+        $users = User::all();
+        return view('bookkeep', ['users' => $users]);
     }
 
     /**
@@ -82,6 +105,7 @@ class BookkeepController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**
