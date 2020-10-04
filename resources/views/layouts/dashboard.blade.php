@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('/dashboard/plugins/summernote/summernote-bs4.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @yield('include.css')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -183,16 +184,15 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="{{ url('dashboard/home') }}" class="nav-link active">
+                            <a href="{{ route('home') }}" class="nav-link {{ Request::is('dashboard/home') ? 'active':'' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Demo</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('bookkeep') }}" class="nav-link">
+                            <a href="{{ route('bookkeep') }}" class="nav-link {{ Request::is('dashboard/bookkeep') ? 'active':'' }} ">
                                 <i class="nav-icon fas fa-dollar-sign"></i>
                                 <p>
                                     記帳主程式
@@ -200,7 +200,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('depositLog') }}" class="nav-link">
+                            <a href="{{ route('depositLog') }}" class="nav-link {{ Request::is('dashboard/depositLog') ? 'active':'' }}">
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     歷史紀錄
@@ -208,7 +208,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="gallery.html" class="nav-link">
+                            <a href="gallery.html" class="nav-link {{ Request::is('dashboard/gallery') ? 'active':'' }}">
                                 <i class="nav-icon fas fa-trophy"></i>
                                 <p>
                                     餘額排行榜
@@ -216,7 +216,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="gallery.html" class="nav-link">
+                            <a href="gallery.html" class="nav-link {{ Request::is('dashboard/gallery') ? 'active':'' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     人員管理
@@ -343,6 +343,8 @@
         })
 
     </script>
+    <!-- jQuery -->
+    <script src="{{ asset('/dashboard/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- ChartJS -->
@@ -367,7 +369,15 @@
 
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('/dashboard/dist/js/demo.js') }}"></script>
-    @yield('script.include')
+
+    <script>
+
+
+        console.log();
+        // 控制左邊navbar active
+
+    </script>
+    @yield('include.js')
 </body>
 
 </html>
