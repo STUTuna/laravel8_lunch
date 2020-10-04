@@ -17,7 +17,8 @@
                             <tr>
                                 <th>姓名</th>
                                 <th>金額</th>
-                                {{-- <th>操作者</th> --}}
+                                <th>操作者</th>
+                                <th>備註</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,7 +28,8 @@
                                     <tr>
                                         <td>{{ $depositLog->user->name }}</td>
                                         <td>{{ $depositLog->money }}</td>
-                                        {{-- <td>{{ $operators[$key]->user->name }}</td> --}}
+                                        <td>{{ $depositLog->operator->name }}</td>
+                                        <td>{{ $depositLog->remark }}</td>
                                     </tr>
                                 @endforeach
                                 <tr>
