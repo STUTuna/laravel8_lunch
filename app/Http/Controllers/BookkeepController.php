@@ -21,7 +21,7 @@ class BookkeepController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -44,7 +44,7 @@ class BookkeepController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -53,17 +53,21 @@ class BookkeepController extends Controller
             $user->deposit = $user->deposit - intval($request->input('del')[$key]) + intval($request->input('add')[$key]);
             $user->save();
 
-            $depositLog = new DepositLog;
-            $depositLog->user_id = $user_id;
-            $depositLog->remark = $request->input('remark')[$key];
-
             if(isset($request->input('del')[$key]) && $request->input('del')[$key] > 0){
+                $depositLog = new DepositLog;
+                $depositLog->user_id = $user_id;
+                $depositLog->remark = $request->input('remark')[$key];
+
                 $depositLog->money =  intval($request->input('del')[$key]) * -1;
                 $depositLog->operator_id = auth()->user()->id;
                 $depositLog->save();
             }
 
             if(isset($request->input('add')[$key]) && $request->input('add')[$key] > 0){
+                $depositLog = new DepositLog;
+                $depositLog->user_id = $user_id;
+                $depositLog->remark = $request->input('remark')[$key];
+
                 $depositLog->money =  intval($request->input('add')[$key]);
                 $depositLog->operator_id = auth()->user()->id;
                 $depositLog->save();
