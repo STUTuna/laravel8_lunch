@@ -19,6 +19,7 @@
                                 <th>金額</th>
                                 <th>操作者</th>
                                 <th>備註</th>
+                                <th>時間點</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +31,7 @@
                                         <td>{{ $depositLog->money }}</td>
                                         <td>{{ $depositLog->operator->name }}</td>
                                         <td>{{ $depositLog->remark }}</td>
+                                        <td>{{ $depositLog->created_at }}</td>
                                     </tr>
                                 @endforeach
                                 <tr>
