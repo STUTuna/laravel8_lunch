@@ -588,13 +588,13 @@
 
 @endsection
 
-@section('script.include')
+@section('include.js')
 
 
-<!-- JQVMap -->
-<script src="{{ asset('/dashboard/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('/dashboard/dist/js/pages/dashboard.js') }}"></script>
-<script src="{{ asset('/dashboard/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+    <!-- JQVMap -->
+    <script src="{{ asset('/dashboard/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ asset('/dashboard/dist/js/pages/dashboard.js') }}"></script>
+    <script src="{{ asset('/dashboard/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
 
 @endsection

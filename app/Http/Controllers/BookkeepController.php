@@ -55,6 +55,7 @@ class BookkeepController extends Controller
 
             $depositLog = new DepositLog;
             $depositLog->user_id = $user_id;
+            $depositLog->remark = $request->input('remark')[$key];
 
             if(isset($request->input('del')[$key]) && $request->input('del')[$key] > 0){
                 $depositLog->money =  intval($request->input('del')[$key]) * -1;
@@ -69,8 +70,7 @@ class BookkeepController extends Controller
             }
 
         }
-        $users = User::all();
-        return view('bookkeep', ['users' => $users]);
+        return redirect()->route('depositLog');
     }
 
     /**

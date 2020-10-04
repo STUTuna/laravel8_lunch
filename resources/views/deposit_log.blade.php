@@ -1,4 +1,11 @@
 @extends('layouts.dashboard')
+
+@section('include.css')
+<!-- DataTables -->
+    <link rel="stylesheet" href=" {{ asset('dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href=" {{ asset('dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+@endsection
+
 @section('title',"記帳主程式")
 @section('content.name',"記帳主程式")
 @section('content')
@@ -12,14 +19,14 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-hover text-nowrap" id="deposit_log_table">
                         <thead>
                             <tr>
                                 <th>姓名</th>
                                 <th>金額</th>
                                 <th>操作者</th>
                                 <th>備註</th>
-                                <th>時間點</th>
+                                <th>操作時間</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,14 +41,6 @@
                                         <td>{{ $depositLog->created_at }}</td>
                                     </tr>
                                 @endforeach
-                                <tr>
-                                    <td></td>
-                                    <td class="text-right">
-                                        <button class="btn btn-app bg-success" type="submit">
-                                            <i class="fas fa-save"></i> 儲存
-                                        </button>
-                                    </td>
-                                </tr>
                             </form>
                         </tbody>
                     </table>
@@ -52,4 +51,24 @@
         </div>
     </div>
 
+@endsection
+@section('include.js')
+    <!-- DataTables -->
+    <script src="{{ asset('dashboard/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script>
+        $(function () {
+            $('#deposit_log_table').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": true,
+            });
+        });
+    </script>
 @endsection
