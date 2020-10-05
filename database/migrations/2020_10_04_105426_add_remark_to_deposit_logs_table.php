@@ -15,7 +15,7 @@ class AddRemarkToDepositLogsTable extends Migration
     {
         Schema::table('deposit_logs', function (Blueprint $table) {
             //
-            $table->string('remark', 255);
+            $table->string('remark', 255)->nullable(true);
         });
     }
 

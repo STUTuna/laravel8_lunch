@@ -24,8 +24,11 @@ class DepositLogController extends Controller
      */
     public function index()
     {
-        $depositLogs = DepositLog::orderBy('created_at', 'desc')->get();
+//        $depositLogs = DepositLog::orderBy('created_at', 'desc')->get();
+        $depositLogs = DepositLog::all();
 
         return view('deposit_log', ['depositLogs' => $depositLogs]);
     }
+
+
 }
