@@ -51,7 +51,7 @@ class BookkeepController extends Controller
     {
         foreach ($request->input('user_id') as $key => $user_id) {
             $user = User::find($user_id);
-            $user->deposit = $user->deposit - intval($request->input('del')[$key]) + intval($request->input('add')[$key]);
+            $user->deposit = $user->deposit - intval($request->input('del')[$key]??0) + intval($request->input('add')[$key]??0);
             $user->save();
 
             if (isset($request->input('del')[$key]) && $request->input('del')[$key] > 0) {
