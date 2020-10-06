@@ -14,7 +14,7 @@
                             </h1>
                         </div>
                         <div class="col-sm text-right">
-                            <button type="button" class="btn btn-success text-right">開啟儲值</button>
+                            <button type="button" class="btn btn-success text-right open-add">開啟儲值</button>
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@
                                                     <i class="fas fa-dollar-sign"></i>
                                                     </span>
                                             </div>
-                                            <input type="number" class="form-control form-control-add" name="add[]" value="0">
+                                            <input type="number" class="form-control form-control-add" name="add[]" value="0" disabled>
                                         </div>
                                     </td>
                                     <td>
@@ -101,6 +101,10 @@
             return total_num;
         }
 
+        $('.open-add').on('click',function () {
+            console.log('test');
+            $('.form-control-add').prop('disabled',false);
+        });
         $('.form-control-add,.form-control-del').on('keyup',function () {
             let total_del = inputSum($('.form-control-del'));
             let total_add = inputSum($('.form-control-add'));
