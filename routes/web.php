@@ -23,15 +23,22 @@ Route::get('/admin', function () {
 
 Auth::routes();
 
-Route::get('/dashboard/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('dashboard')->group(function () {
+    Route::get('users', function () {
+        // Matches The "/admin/users" URL
+    });
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard/users', [App\Http\Controllers\HomeController::class, 'index'])->name('users');
+    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
 
 // 記帳
-Route::get('/dashboard/bookkeep', [App\Http\Controllers\BookkeepController::class, 'index'])->name('bookkeep');
-Route::post('/dashboard/bookkeep', [App\Http\Controllers\BookkeepController::class, 'store'])->name('bookkeep.store');
+    Route::get('/bookkeep', [App\Http\Controllers\BookkeepController::class, 'index'])->name('bookkeep');
+    Route::post('/bookkeep', [App\Http\Controllers\BookkeepController::class, 'store'])->name('bookkeep.store');
 
 // 歷史紀錄
-Route::get('/dashboard/depositLog', [App\Http\Controllers\DepositLogController::class, 'index'])->name('depositLog');
+    Route::get('/depositLog', [App\Http\Controllers\DepositLogController::class, 'index'])->name('depositLog');
 //餘額排行榜
-Route::get('/dashboard/ranking', [App\Http\Controllers\RankingController::class, 'index'])->name('ranking');
+    Route::get('/ranking', [App\Http\Controllers\RankingController::class, 'index'])->name('ranking');
+//工作設備表
+});
+
