@@ -40,5 +40,6 @@ Route::prefix('dashboard')->group(function () {
 //餘額排行榜
     Route::get('/ranking', [App\Http\Controllers\RankingController::class, 'index'])->name('ranking');
 //工作設備表
+    Route::get('/device', [App\Http\Controllers\DeviceController::class, 'index'])->name('device');
 });
 

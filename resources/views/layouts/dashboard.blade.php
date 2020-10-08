@@ -115,7 +115,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('device') }}" class="nav-link">
                                 <i class="nav-icon fas fa-crow"></i>
                                 <p>
                                     工作設備表(待新增)
