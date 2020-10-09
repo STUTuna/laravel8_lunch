@@ -17,6 +17,7 @@ class CreateUserDevicesTable extends Migration
             $table->id();
             $table->string('name',255);
             $table->string('class',255)->comment('分類');
+            $table->string('barcode',255);
             $table->string('remark',255)->nullable();
             $table->boolean('is_company')->default(true)->comment('是否為公司資產');
             $table->foreignId('user_id')->constrained();

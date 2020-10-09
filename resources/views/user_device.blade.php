@@ -68,13 +68,13 @@
                             <label class="input-group-text" for="inputGroupSelect01">設備類別</label>
                         </div>
                         <select class="custom-select" id="select_lang">
-                            <option value="tw" selected="">請選擇...</option>
-                            <option value="tw">顯卡</option>
-                            <option value="mas">CPU</option>
-                            <option value="mas">硬碟</option>
-                            <option value="mas">螢幕</option>
-                            <option value="mas">滑鼠</option>
-                            <option value="mas">鍵盤</option>
+                            <option value="" selected="">請選擇...</option>
+                            <option value="顯卡">顯卡</option>
+                            <option value="CPU">CPU</option>
+                            <option value="硬碟">硬碟</option>
+                            <option value="螢幕">螢幕</option>
+                            <option value="滑鼠">滑鼠</option>
+                            <option value="鍵盤">鍵盤</option>
                         </select>
                     </div>
                     <div class="input-group mb-3">
@@ -86,18 +86,29 @@
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">
-                                BarCode
                                 <i class="fas fa-barcode"></i>
                             </label>
                         </div>
-                        <input type="text" class="form-control" placeholder="條碼" aria-label="條碼">
+                        <input type="text" class="form-control" placeholder="BarCode" aria-label="條碼">
                     </div>
-                    <button type="button" class="btn btn-success ">
-                        <i class="fas fa-plus"></i>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">備註</span>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-success btn-block mb-3">
+{{--                        <i class="fas fa-plus"></i>--}}
+                        <span class="oi" data-glyph="plus"></span>
+                        新增
                     </button>
 
-                    <p>One fine body&hellip;</p>
+
+                    <div class="alert alert-dark" role="alert">
+                        目前尚無資料
+                    </div>
                 </div>
+                <hr>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
@@ -110,5 +121,7 @@
 
 @endsection
 @section('include.js')
-
+    <script>
+        fetch();
+    </script>
 @endsection
